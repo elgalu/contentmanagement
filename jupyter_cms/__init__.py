@@ -58,6 +58,8 @@ def load_ipython_extension(ipython):
         # fall back on an environment variable or ultimately the pwd
         work_dir = os.getenv('WORK', '.')
 
+    # Override work_dir for our use case
+    work_dir = '/home/nbuser'
     loader.enable(work_dir)
     ipython.push({'load_notebook': loader.load_notebook})
     ipython.register_magics(InjectMagic(ipython))

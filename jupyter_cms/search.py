@@ -8,6 +8,8 @@ import os
 
 class SearchHandler(IPythonHandler):
     def initialize(self, work_dir):
+        # Override work_dir for our use case
+        work_dir = '/home/nbuser'
         self.index = Index(work_dir)
         self.work_dir = work_dir
         self.work_dir_len = len(self.work_dir)+1
@@ -35,7 +37,7 @@ class SearchHandler(IPythonHandler):
             # Add relative paths
             result['rel_dirname'] = os.path.dirname(rel_path)
             result['rel_path'] = rel_path
-        
+
         self.write(dict(results=results, total=total))
         self.finish()
 
