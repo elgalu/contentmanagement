@@ -7,7 +7,7 @@
 // TODO: making it a plain module for now which we can convert to requirejs-i18n
 // format later
 define({
-    search_dialog_title: 'Search',
+    search_dialog_title: 'Search inside files within your home directory',
     search_placeholder: 'Enter a search query (e.g., matplo*, plot OR chart)',
     search_query_link: 'Query Help',
     search_hits_tmpl: 'Showing <%= hits %> of <%= total %> matches',

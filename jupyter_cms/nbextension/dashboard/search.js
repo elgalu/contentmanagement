@@ -30,7 +30,7 @@ define([
     // Add search button
     var $toolbar = $('.tree-buttons').find('.pull-right');
     $('<button>')
-        .attr('title', 'Search files')
+        .attr('title', 'Search inside files within your home directory')
         .addClass('btn btn-default btn-xs')
         .text('Search')
         .on('click', function() {
