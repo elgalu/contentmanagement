@@ -12,7 +12,7 @@ class SearchHandler(IPythonHandler):
         work_dir = '/home/nbuser'
         self.index = Index(work_dir)
         self.work_dir = work_dir
-        self.work_dir_len = len(self.work_dir)+1
+        # self.work_dir_len = len(self.work_dir)+1
 
     @web.authenticated
     def get(self):
@@ -25,7 +25,9 @@ class SearchHandler(IPythonHandler):
         results, total = self.index.search(query_string)
 
         for result in results:
-            rel_path = result['path'][self.work_dir_len:]
+            # Do not skip the base path '/home/nbuser'
+            # rel_path = result['path'][self.work_dir_len:]
+            rel_path = result['path']
             if rel_path.endswith('.ipynb'):
                 # take it at face value that the extension implies notebook
                 url = url_path_join(self.base_url, 'notebooks', rel_path)
