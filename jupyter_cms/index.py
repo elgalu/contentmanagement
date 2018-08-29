@@ -72,7 +72,7 @@ class Index(object):
 
     def _scan_disk(self, on_disk, path):
         for entry in scandir(path):
-            if not entry.name.startswith('.') and entry.is_dir():
+            if not entry.name.startswith('.') and entry.is_dir() and not entry.is_symlink():
                 self._scan_disk(on_disk, entry.path)
             elif entry.is_file():
                 on_disk[entry.path] = entry.stat().st_mtime
