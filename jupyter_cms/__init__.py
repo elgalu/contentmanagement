@@ -39,10 +39,7 @@ def _jupyter_nbextension_paths():
 
 # Use the built-in version of scandir if possible, otherwise
 # use the scandir module version
-try:
-    from os import scandir
-except ImportError:
-    from scandir import scandir
+from os import scandir
 
 
 def load_ipython_extension(ipython):
