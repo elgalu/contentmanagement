@@ -56,7 +56,7 @@ def load_ipython_extension(ipython):
         work_dir = os.getenv('WORK', '.')
 
     # Override work_dir for our use case
-    work_dir = '/home/nbuser'
+    work_dir = '/nfs'
     loader.enable(work_dir)
     ipython.push({'load_notebook': loader.load_notebook})
     ipython.register_magics(InjectMagic(ipython))

@@ -9,7 +9,7 @@ import os
 class SearchHandler(IPythonHandler):
     def initialize(self, work_dir):
         # Override work_dir for our use case
-        work_dir = '/home/nbuser'
+        work_dir = '/nfs'
         self.index = Index(work_dir)
         self.work_dir = work_dir
         # self.work_dir_len = len(self.work_dir)+1
@@ -25,7 +25,7 @@ class SearchHandler(IPythonHandler):
         results, total = self.index.search(query_string)
 
         for result in results:
-            # Do not skip the base path '/home/nbuser'
+            # Do not skip the base path '/nfs'
             # rel_path = result['path'][self.work_dir_len:]
             rel_path = result['path']
             if rel_path.endswith('.ipynb'):
@@ -48,7 +48,7 @@ def load_jupyter_server_extension(nb_app):
     host_pattern = '.*$'
     route_pattern = url_path_join(web_app.settings['base_url'], '/search')
     # handler_kwargs = dict(work_dir=nb_app.notebook_dir)
-    handler_kwargs = dict(work_dir='/home/nbuser')
+    handler_kwargs = dict(work_dir='/nfs')
     web_app.add_handlers(host_pattern, [
         (route_pattern, SearchHandler, handler_kwargs)
     ])

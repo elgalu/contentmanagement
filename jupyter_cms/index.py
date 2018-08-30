@@ -21,7 +21,7 @@ except ImportError:
 class Index(object):
     def __init__(self, work_dir):
         # Override work_dir for our use case
-        work_dir = '/home/nbuser'
+        work_dir = '/nfs'
         self.work_dir = work_dir
         self._init_index()
 
